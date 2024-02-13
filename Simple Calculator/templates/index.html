@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            position: relative; /* To make sure the absolute positioning works relative to the body */
+            background-image: url('https://img.freepik.com/free-photo/beautiful-mountain-lake-background-remix_53876-125213.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            position: relative;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .button {
+            flex: 1;
+            height: 40px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .display {
+            width: 95%;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 18px;
+            text-align: right;
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: black;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button" onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button" onclick="appendToDisplay('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="calculateResult()">=</button>
+            <button class="button" onclick="appendToDisplay('/')">/</button>
+        </div>
+        <div class="footer-text">With ♥️ Blessy </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            if (document.getElementById('display').innerText === '0') {
+                document.getElementById('display').innerText = '';
+            }
+            document.getElementById('display').innerText += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').innerText = '0';
+        }
+
+        function calculateResult() {
+            var expression = document.getElementById('display').innerText;
+            var result = eval(expression);
+            document.getElementById('display').innerText = result;
+        }
+    </script>
+</body>
+</html>
